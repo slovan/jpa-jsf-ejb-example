@@ -85,7 +85,9 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Account[ id=" + id + " ]";
+        return "Account{" + "id=" + id + ", ownername=" + ownername + ", balance=" + balance + '}';
     }
+
+
 
 }
