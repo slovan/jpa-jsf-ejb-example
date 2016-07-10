@@ -17,18 +17,16 @@ import javax.persistence.Query;
  * @author volodymyr
  */
 @Stateless
-public class AccountFacade extends AbstractFacade<Account> {
+public class AccountFacade {
 
     @PersistenceContext(unitName = "BankApplicationPU")
     private EntityManager em;
 
-    @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
     public AccountFacade() {
-        super(Account.class);
     }
 
     public Account openAccount(String ownername, int balance) {
