@@ -19,9 +19,28 @@ import javax.persistence.Id;
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String ownername;
+    private int balance;
+
+    public String getOwnername() {
+        return ownername;
+    }
+
+    public void setOwnername(String ownername) {
+        this.ownername = ownername;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
     public Long getId() {
         return id;
@@ -36,6 +55,19 @@ public class Account implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+
+    public void deposit(int amount) {
+        this.balance += amount;
+    }
+
+    public int withdraw(int amount) {
+        if (amount > balance) {
+            return 0;
+        } else {
+            balance -= amount;
+            return balance;
+        }
     }
 
     @Override
@@ -55,5 +87,5 @@ public class Account implements Serializable {
     public String toString() {
         return "entities.Account[ id=" + id + " ]";
     }
-    
+
 }
